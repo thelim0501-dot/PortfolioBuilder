@@ -1,202 +1,215 @@
-// ==========================================
-// Portfolio Builder v1.2
-// ==========================================
+// ============================================
+// Portfolio Builder
+// Version 2.0
+// ============================================
 
-const pages = document.querySelectorAll(".page");
+class PortfolioApp {
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const pageNumber = document.getElementById("pageNumber");
+    constructor() {
 
-const viewer = document.getElementById("viewer");
-const viewerImage = document.getElementById("viewerImage");
-const closeViewer = document.getElementById("closeViewer");
+        this.pages = document.querySelectorAll(".page");
 
-// ==========================================
-// TEMP PROJECT
-// ==========================================
+        this.prevBtn = document.getElementById("prevBtn");
+        this.nextBtn = document.getElementById("nextBtn");
+        this.pageNumber = document.getElementById("pageNumber");
 
-const gallery = document.getElementById("gallery");
+        this.gallery = document.getElementById("gallery");
 
-const tempImages = [
+        this.viewer = document.getElementById("viewer");
+        this.viewerImage = document.getElementById("viewerImage");
+        this.closeViewer = document.getElementById("closeViewer");
 
-    "images/project01/01.jpg",
-    "images/project01/02.jpg",
-    "images/project01/03.jpg",
-    "images/project01/04.jpg"
+        this.currentPage = 0;
 
-];
+        this.projects = [];
 
-let currentPage = 0;
-
-
-// ==========================================
-// PAGE
-// ==========================================
-
-function updatePage(){
-
-    pages.forEach((page,index)=>{
-
-        page.classList.toggle("active",index===currentPage);
-
-    });
-
-    pageNumber.textContent =
-        `${String(currentPage+1).padStart(2,"0")} / ${String(pages.length).padStart(2,"0")}`;
-
-    prevBtn.disabled = currentPage===0;
-
-    nextBtn.disabled = currentPage===pages.length-1;
-
-}
-
-function nextPage(){
-
-    if(currentPage>=pages.length-1) return;
-
-    currentPage++;
-
-    updatePage();
-
-}
-
-function prevPage(){
-
-    if(currentPage<=0) return;
-
-    currentPage--;
-
-    updatePage();
-
-}
-
-
-// ==========================================
-// BUTTON
-// ==========================================
-
-nextBtn.addEventListener("click",nextPage);
-
-prevBtn.addEventListener("click",prevPage);
-
-
-// ==========================================
-// KEYBOARD
-// ==========================================
-
-document.addEventListener("keydown",(e)=>{
-
-    if(viewer.classList.contains("show")){
-
-        if(e.key==="Escape"){
-
-            closeViewerFn();
-
-        }
-
-        return;
+        this.initialize();
 
     }
 
-    switch(e.key){
+    async initialize() {
 
-        case "ArrowRight":
-        case "ArrowDown":
-            nextPage();
-            break;
+        this.bindEvents();
 
-        case "ArrowLeft":
-        case "ArrowUp":
-            prevPage();
-            break;
+        await this.loadProjects();
+
+        this.updatePage();
 
     }
 
-});
+    bindEvents() {
 
+        this.prevBtn.addEventListener("click", () => this.previousPage());
 
-// ==========================================
-// GALLERY
-// ==========================================
+        this.nextBtn.addEventListener("click", () => this.nextPage());
 
-function createGallery(){
+        document.addEventListener("keydown", (e) => this.handleKeyboard(e));
 
-    gallery.innerHTML = "";
+        this.closeViewer.addEventListener("click", () => this.closeImage());
 
-    tempImages.forEach((src)=>{
+        this.viewer.addEventListener("click", (e) => {
 
-        const box = document.createElement("div");
+            if (e.target === this.viewer) {
 
-        box.className = "image-box";
+                this.closeImage();
 
-        const img = document.createElement("img");
-
-        img.src = src;
-
-        img.alt = "";
-
-        img.addEventListener("click",()=>{
-
-            openViewer(src);
+            }
 
         });
 
-        box.appendChild(img);
+    }
 
-        gallery.appendChild(box);
+    async loadProjects() {
 
-    });
+        try {
 
-}
+            const response = await fetch("projects.json");
 
-// ==========================================
-// IMAGE VIEWER
-// ==========================================
+            this.projects = await response.json();
 
-function openViewer(src){
+            console.log("Projects Loaded", this.projects);
 
-    viewerImage.src = src;
+            this.createGallery();
 
-    viewer.classList.add("show");
+        }
 
-}
+        catch (error) {
 
-function closeViewerFn(){
+            console.error(error);
 
-    viewer.classList.remove("show");
-
-    viewerImage.src="";
-
-}
-
-imageBoxes.forEach((img)=>{
-
-    img.addEventListener("click",()=>{
-
-        if(!img.src) return;
-
-        openViewer(img.src);
-
-    });
-
-});
-
-closeViewer.addEventListener("click",closeViewerFn);
-
-viewer.addEventListener("click",(e)=>{
-
-    if(e.target===viewer){
-
-        closeViewerFn();
+        }
 
     }
 
+    createGallery() {
+
+        if (!this.gallery) return;
+
+        this.gallery.innerHTML = "";
+
+        if (this.projects.length === 0) return;
+
+        const project = this.projects[0];
+
+        project.images.forEach((imageName) => {
+
+            const box = document.createElement("div");
+
+            box.className = "image-box";
+
+            const img = document.createElement("img");
+
+            img.src = `images/${project.folder}/${imageName}`;
+
+            img.alt = "";
+
+            img.loading = "lazy";
+
+            img.addEventListener("click", () => {
+
+                this.openImage(img.src);
+
+            });
+
+            box.appendChild(img);
+
+            this.gallery.appendChild(box);
+
+        });
+
+    }
+
+    nextPage() {
+
+        if (this.currentPage >= this.pages.length - 1) return;
+
+        this.currentPage++;
+
+        this.updatePage();
+
+    }
+
+    previousPage() {
+
+        if (this.currentPage <= 0) return;
+
+        this.currentPage--;
+
+        this.updatePage();
+
+    }
+
+    updatePage() {
+
+        this.pages.forEach((page, index) => {
+
+            page.classList.toggle("active", index === this.currentPage);
+
+        });
+
+        this.pageNumber.textContent =
+            `${String(this.currentPage + 1).padStart(2, "0")} / ${String(this.pages.length).padStart(2, "0")}`;
+
+        this.prevBtn.disabled = this.currentPage === 0;
+
+        this.nextBtn.disabled = this.currentPage === this.pages.length - 1;
+
+    }
+
+    handleKeyboard(e) {
+
+        if (this.viewer.classList.contains("show")) {
+
+            if (e.key === "Escape") {
+
+                this.closeImage();
+
+            }
+
+            return;
+
+        }
+
+        switch (e.key) {
+
+            case "ArrowRight":
+            case "ArrowDown":
+
+                this.nextPage();
+
+                break;
+
+            case "ArrowLeft":
+            case "ArrowUp":
+
+                this.previousPage();
+
+                break;
+
+        }
+
+    }
+
+    openImage(src) {
+
+        this.viewerImage.src = src;
+
+        this.viewer.classList.add("show");
+
+    }
+
+    closeImage() {
+
+        this.viewer.classList.remove("show");
+
+        this.viewerImage.src = "";
+
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    new PortfolioApp();
+
 });
-
-
-// ==========================================
-
-createGallery();
-
-updatePage();

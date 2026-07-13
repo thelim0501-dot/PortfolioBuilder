@@ -12,7 +12,20 @@ const viewer = document.getElementById("viewer");
 const viewerImage = document.getElementById("viewerImage");
 const closeViewer = document.getElementById("closeViewer");
 
-const imageBoxes = document.querySelectorAll(".image-box img");
+// ==========================================
+// TEMP PROJECT
+// ==========================================
+
+const gallery = document.getElementById("gallery");
+
+const tempImages = [
+
+    "images/project01/01.jpg",
+    "images/project01/02.jpg",
+    "images/project01/03.jpg",
+    "images/project01/04.jpg"
+
+];
 
 let currentPage = 0;
 
@@ -104,6 +117,40 @@ document.addEventListener("keydown",(e)=>{
 
 
 // ==========================================
+// GALLERY
+// ==========================================
+
+function createGallery(){
+
+    gallery.innerHTML = "";
+
+    tempImages.forEach((src)=>{
+
+        const box = document.createElement("div");
+
+        box.className = "image-box";
+
+        const img = document.createElement("img");
+
+        img.src = src;
+
+        img.alt = "";
+
+        img.addEventListener("click",()=>{
+
+            openViewer(src);
+
+        });
+
+        box.appendChild(img);
+
+        gallery.appendChild(box);
+
+    });
+
+}
+
+// ==========================================
 // IMAGE VIEWER
 // ==========================================
 
@@ -149,5 +196,7 @@ viewer.addEventListener("click",(e)=>{
 
 
 // ==========================================
+
+createGallery();
 
 updatePage();

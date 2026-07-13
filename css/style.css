@@ -1,11 +1,11 @@
 /* ======================================================
     Portfolio Builder
-    Version 2.0
+    Version 2.1
 ====================================================== */
 
-/* ======================================================
-    RESET
-====================================================== */
+/* =========================
+        RESET
+========================= */
 
 *{
     margin:0;
@@ -22,8 +22,7 @@ body{
     overflow:hidden;
 
     background:#0a0a0a;
-
-    color:#ffffff;
+    color:#fff;
 
     font-family:
     "Pretendard",
@@ -34,9 +33,9 @@ body{
 
 }
 
-/* ======================================================
-    APP
-====================================================== */
+/* =========================
+        APP
+========================= */
 
 #app{
 
@@ -44,53 +43,44 @@ body{
     height:100vh;
 
     position:relative;
-
     overflow:hidden;
 
 }
 
-/* ======================================================
-    PAGE
-====================================================== */
+/* =========================
+        PAGE
+========================= */
 
 .page{
 
     position:absolute;
-
     inset:0;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-    padding:90px 0 170px;
-
     opacity:0;
-
     visibility:hidden;
 
     transform:translateY(40px);
 
     transition:
-        opacity .65s ease,
-        transform .65s ease;
+    opacity .6s,
+    transform .6s;
 
 }
 
 .page.active{
 
     opacity:1;
-
     visibility:visible;
-
     transform:translateY(0);
 
 }
 
 /* ======================================================
-    PAGE 01
+    COVER
 ====================================================== */
 
 .cover-content{
@@ -102,9 +92,7 @@ body{
 .cover-content h1{
 
     font-size:110px;
-
     font-weight:800;
-
     letter-spacing:14px;
 
 }
@@ -112,41 +100,38 @@ body{
 .selected{
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     gap:16px;
 
-    margin-top:34px;
+    margin-top:30px;
 
 }
 
 .selected span{
 
     width:60px;
-
     height:1px;
 
-    background:#6f6f6f;
+    background:#6d6d6d;
 
 }
 
 .selected p{
 
-    color:#bcbcbc;
+    color:#bdbdbd;
 
     font-size:16px;
 
-    letter-spacing:4px;
-
     font-weight:300;
+
+    letter-spacing:4px;
 
 }
 
 /* ======================================================
-    PAGE 02
+    INTRO
 ====================================================== */
 
 .intro-content{
@@ -180,20 +165,21 @@ body{
 }
 
 /* ======================================================
-    PAGE 03
+    GALLERY
 ====================================================== */
 
 .gallery{
 
-    width:min(1500px,86vw);
-
-    margin:auto;
+    width:min(1460px,82vw);
 
     display:grid;
 
     grid-template-columns:repeat(2,1fr);
 
-    gap:34px;
+    gap:26px;
+
+    margin-top:40px;
+    margin-bottom:80px;
 
 }
 
@@ -205,17 +191,15 @@ body{
 
     position:relative;
 
+    aspect-ratio:16/9;
+
     overflow:hidden;
-
-    aspect-ratio:16 / 9;
-
-    background:#111;
 
     border:1px solid rgba(255,255,255,.08);
 
-    transition:
-        transform .35s,
-        border-color .35s;
+    background:#111;
+
+    transition:.35s;
 
     cursor:pointer;
 
@@ -224,7 +208,6 @@ body{
 .image-box img{
 
     width:100%;
-
     height:100%;
 
     display:block;
@@ -243,7 +226,7 @@ body{
 
 .image-box:hover img{
 
-    transform:scale(1.015);
+    transform:scale(1.02);
 
 }
 
@@ -256,16 +239,13 @@ body{
     position:fixed;
 
     left:50%;
-
-    bottom:26px;
+    bottom:28px;
 
     transform:translateX(-50%);
 
     display:flex;
-
     align-items:center;
-
-    gap:28px;
+    gap:26px;
 
     padding:16px 30px;
 
@@ -284,7 +264,6 @@ body{
 #navigation button{
 
     width:46px;
-
     height:46px;
 
     border:none;
@@ -319,8 +298,6 @@ body{
 
     cursor:default;
 
-    transform:none;
-
 }
 
 #pageNumber{
@@ -333,14 +310,12 @@ body{
 
     letter-spacing:3px;
 
-    color:#d9d9d9;
-
-    font-variant-numeric:tabular-nums;
+    color:#d8d8d8;
 
 }
 
 /* ======================================================
-    IMAGE VIEWER
+    VIEWER
 ====================================================== */
 
 #viewer{
@@ -352,13 +327,11 @@ body{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
-    background:rgba(0,0,0,.97);
+    background:rgba(0,0,0,.96);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.35s;
@@ -370,7 +343,6 @@ body{
 #viewer.show{
 
     opacity:1;
-
     visibility:visible;
 
 }
@@ -378,7 +350,6 @@ body{
 #viewerImage{
 
     max-width:92vw;
-
     max-height:90vh;
 
     object-fit:contain;
@@ -389,16 +360,13 @@ body{
 
     position:absolute;
 
-    top:35px;
-
+    top:36px;
     right:40px;
 
-    width:54px;
-
-    height:54px;
+    width:52px;
+    height:52px;
 
     border:none;
-
     background:none;
 
     color:white;
@@ -407,62 +375,10 @@ body{
 
     cursor:pointer;
 
-    transition:.25s;
-
 }
 
 #closeViewer:hover{
 
     transform:rotate(90deg);
-
-}
-
-/* ======================================================
-    RESPONSIVE
-====================================================== */
-
-@media (max-width:1100px){
-
-.gallery{
-
-    width:90vw;
-
-    gap:20px;
-
-}
-
-.cover-content h1{
-
-    font-size:72px;
-
-}
-
-.intro-content h1{
-
-    font-size:42px;
-
-}
-
-}
-
-@media (max-width:800px){
-
-.gallery{
-
-    grid-template-columns:1fr;
-
-}
-
-.cover-content h1{
-
-    font-size:52px;
-
-}
-
-.intro-content h1{
-
-    font-size:32px;
-
-}
 
 }

@@ -235,7 +235,7 @@ body{
 
 .image-box:hover img{
 
-    transform:scale(1.03);
+    transform:scale(1.015);
 
 }
 
@@ -377,7 +377,7 @@ body{
 
     inset:0;
 
-    background:rgba(0,0,0,.92);
+    background:rgba(0,0,0,.97);
 
     display:flex;
 

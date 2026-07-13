@@ -1,7 +1,7 @@
-/* ===================================================
+/* ======================================================
    Portfolio Builder
-   Style v1.0
-=================================================== */
+   Version 1.1
+====================================================== */
 
 *{
     margin:0;
@@ -17,7 +17,7 @@ body{
 
     overflow:hidden;
 
-    background:#0b0b0b;
+    background:#0a0a0a;
 
     color:#ffffff;
 
@@ -28,25 +28,30 @@ body{
 
 }
 
-/* ==========================
-        APP
-========================== */
+body{
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+/* ======================================================
+    APP
+====================================================== */
 
 #app{
 
-    position:relative;
-
     width:100vw;
     height:100vh;
+
+    position:relative;
 
     overflow:hidden;
 
 }
 
-
-/* ==========================
-        PAGE
-========================== */
+/* ======================================================
+    PAGE
+====================================================== */
 
 .page{
 
@@ -60,18 +65,15 @@ body{
 
     align-items:center;
 
-    flex-direction:column;
-
     opacity:0;
 
     visibility:hidden;
 
-    transform:translateY(30px);
+    transform:translateY(40px);
 
     transition:
-        opacity .7s ease,
-        transform .7s ease,
-        visibility .7s;
+        opacity .65s ease,
+        transform .65s ease;
 
 }
 
@@ -85,16 +87,13 @@ body{
 
 }
 
-
-/* ==========================
-      COVER
-========================== */
+/* ======================================================
+    PAGE 01
+====================================================== */
 
 .cover-content{
 
     text-align:center;
-
-    user-select:none;
 
 }
 
@@ -106,65 +105,123 @@ body{
 
     letter-spacing:14px;
 
-    margin-bottom:28px;
+}
+
+/* Selected Works */
+
+.selected{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:38px;
 
 }
 
-.cover-content h2{
+.selected span{
 
-    font-size:18px;
+    width:90px;
 
-    font-weight:300;
+    height:1px;
 
-    letter-spacing:8px;
+    background:#555;
 
-    color:#8c8c8c;
+}
+
+.selected p{
+
+    color:#999;
+
+    font-size:17px;
+
+    letter-spacing:5px;
 
     text-transform:uppercase;
 
 }
 
-
-/* ==========================
-      INTRO
-========================== */
+/* ======================================================
+    PAGE 02
+====================================================== */
 
 .intro-content{
 
     text-align:center;
 
-    user-select:none;
-
 }
 
 .intro-content h1{
 
-    font-size:54px;
+    font-size:58px;
 
     font-weight:300;
 
     letter-spacing:10px;
 
-    margin-bottom:35px;
-
 }
 
 .intro-content h2{
+
+    margin-top:34px;
 
     font-size:22px;
 
     font-weight:500;
 
-    letter-spacing:10px;
+    letter-spacing:6px;
 
     color:#bdbdbd;
 
 }
 
+/* ======================================================
+    PAGE 03
+====================================================== */
 
-/* ==========================
-      NAVIGATION
-========================== */
+.gallery{
+
+    width:min(1400px,88vw);
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+
+}
+
+.image-box{
+
+    aspect-ratio:16/9;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#161616;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.image-box:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(255,255,255,.25);
+
+}
+
+/* ======================================================
+    Navigation
+====================================================== */
 
 #navigation{
 
@@ -172,7 +229,7 @@ body{
 
     left:50%;
 
-    bottom:40px;
+    bottom:35px;
 
     transform:translateX(-50%);
 
@@ -180,7 +237,7 @@ body{
 
     align-items:center;
 
-    gap:28px;
+    gap:26px;
 
     padding:16px 30px;
 
@@ -188,18 +245,17 @@ body{
 
     background:rgba(255,255,255,.05);
 
-    backdrop-filter:blur(18px);
-
     border:1px solid rgba(255,255,255,.08);
 
-    z-index:1000;
+    backdrop-filter:blur(20px);
+
+    z-index:999;
 
 }
 
-
-/* ==========================
-        BUTTON
-========================== */
+/* ======================================================
+    Button
+====================================================== */
 
 #navigation button{
 
@@ -207,17 +263,17 @@ body{
 
     height:46px;
 
-    border-radius:50%;
-
     border:none;
 
-    cursor:pointer;
+    border-radius:50%;
 
     background:rgba(255,255,255,.08);
 
     color:white;
 
     font-size:24px;
+
+    cursor:pointer;
 
     transition:.25s;
 
@@ -243,14 +299,13 @@ body{
 
 }
 
-
-/* ==========================
-      PAGE NUMBER
-========================== */
+/* ======================================================
+    Page Number
+====================================================== */
 
 #pageNumber{
 
-    width:90px;
+    min-width:80px;
 
     text-align:center;
 
@@ -258,48 +313,33 @@ body{
 
     letter-spacing:4px;
 
-    color:#d0d0d0;
+    color:#d8d8d8;
 
 }
 
+/* ======================================================
+    Responsive
+====================================================== */
 
-/* ==========================
-      Responsive
-========================== */
-
-@media (max-width:900px){
+@media(max-width:1000px){
 
 .cover-content h1{
 
-    font-size:62px;
-
-    letter-spacing:8px;
-
-}
-
-.cover-content h2{
-
-    font-size:15px;
+    font-size:70px;
 
 }
 
 .intro-content h1{
 
-    font-size:36px;
+    font-size:38px;
 
 }
 
-.intro-content h2{
+.gallery{
 
-    font-size:18px;
+    width:90vw;
 
-    letter-spacing:6px;
-
-}
-
-#navigation{
-
-    padding:12px 20px;
+    gap:18px;
 
 }
 

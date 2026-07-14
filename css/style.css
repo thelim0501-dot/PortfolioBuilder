@@ -300,6 +300,52 @@ body{
 
 }
 
+/* ==========================================
+    SHINE EFFECT
+========================================== */
+
+.image-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-130%;
+
+    width:60%;
+    height:100%;
+
+    pointer-events:none;
+
+    background:linear-gradient(
+
+        110deg,
+
+        rgba(255,255,255,0) 0%,
+
+        rgba(255,255,255,.12) 48%,
+
+        rgba(255,255,255,.35) 50%,
+
+        rgba(255,255,255,.12) 52%,
+
+        rgba(255,255,255,0) 100%
+
+    );
+
+    transform:skewX(-25deg);
+
+    transition:left .65s ease;
+
+}
+
+.image-box:hover::before{
+
+    left:160%;
+
+}
+
 .image-overlay span{
 
     color:rgba(255,255,255,.92);

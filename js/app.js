@@ -58,6 +58,22 @@ class PortfolioApp {
 
       });
 
+        this.viewerPrev.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            this.previousImage();
+
+      });
+
+        this.viewerNext.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            this.nextImage();
+
+});
+        
     }
 
     async loadProjects() {
@@ -163,15 +179,27 @@ class PortfolioApp {
 
         if (this.viewer.classList.contains("show")) {
 
-            if (e.key === "Escape") {
+    if (e.key === "Escape") {
 
-                this.closeImage();
+        this.closeImage();
 
-            }
+    }
 
-            return;
+    if (e.key === "ArrowRight") {
 
-        }
+        this.nextImage();
+
+    }
+
+    if (e.key === "ArrowLeft") {
+
+        this.previousImage();
+
+    }
+
+    return;
+
+}
 
         switch (e.key) {
 
@@ -209,6 +237,46 @@ class PortfolioApp {
 
 }
 
+    previousImage() {
+
+    const project = this.projects[0];
+
+    this.currentImageIndex--;
+
+    if (this.currentImageIndex < 0) {
+
+        this.currentImageIndex = project.images.length - 1;
+
+    }
+
+    this.viewerImage.src =
+        `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+
+    this.viewerCount.textContent =
+        `${this.currentImageIndex + 1} / ${project.images.length}`;
+
+}
+
+    nextImage() {
+
+    const project = this.projects[0];
+
+    this.currentImageIndex++;
+
+    if (this.currentImageIndex >= project.images.length) {
+
+        this.currentImageIndex = 0;
+
+    }
+
+    this.viewerImage.src =
+        `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+
+    this.viewerCount.textContent =
+        `${this.currentImageIndex + 1} / ${project.images.length}`;
+
+}
+    
     closeImage() {
 
     this.viewer.classList.remove("show");

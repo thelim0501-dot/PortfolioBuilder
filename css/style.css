@@ -522,6 +522,22 @@ body{
 
     object-fit:contain;
 
+    opacity:1;
+
+    transform:scale(1);
+
+    transition:
+        opacity .22s ease,
+        transform .35s ease;
+
+}
+
+#viewerImage.fade{
+
+    opacity:0;
+
+    transform:scale(1.02);
+
 }
 
 /* ======================================================

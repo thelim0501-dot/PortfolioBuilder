@@ -468,3 +468,210 @@ body{
     font-variant-numeric:tabular-nums;
 
 }
+
+/* ======================================================
+    LOADER
+====================================================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#0a0a0a;
+
+    z-index:99999;
+
+    transition:opacity .8s ease,
+               visibility .8s ease;
+
+}
+
+#loader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.loader-content{
+
+    text-align:center;
+
+}
+
+#loaderTitle{
+
+    font-size:110px;
+
+    font-weight:800;
+
+    letter-spacing:14px;
+
+    color:#fff;
+
+    opacity:0;
+
+    animation:flicker 1.4s forwards;
+
+}
+
+.loaderSelected{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:30px;
+
+    opacity:0;
+
+    transform:translateY(12px);
+
+    animation:selectedIn .5s ease forwards;
+
+    animation-delay:1.25s;
+
+}
+
+.loaderSelected span{
+
+    width:60px;
+
+    height:1px;
+
+    background:#6d6d6d;
+
+    transform:scaleX(0);
+
+    transform-origin:center;
+
+    animation:lineIn .45s ease forwards;
+
+    animation-delay:1.25s;
+
+}
+
+.loaderSelected span:last-child{
+
+    animation-delay:1.35s;
+
+}
+
+.loaderSelected p{
+
+    color:#bdbdbd;
+
+    font-size:16px;
+
+    font-weight:300;
+
+    letter-spacing:4px;
+
+}
+
+
+/* ===========================
+        Animation
+=========================== */
+
+@keyframes flicker{
+
+    0%{
+
+        opacity:0;
+
+        filter:brightness(.2);
+
+        text-shadow:none;
+
+    }
+
+    8%{
+
+        opacity:.18;
+
+    }
+
+    12%{
+
+        opacity:0;
+
+    }
+
+    22%{
+
+        opacity:.45;
+
+    }
+
+    28%{
+
+        opacity:0;
+
+    }
+
+    45%{
+
+        opacity:.75;
+
+    }
+
+    52%{
+
+        opacity:.15;
+
+    }
+
+    65%{
+
+        opacity:1;
+
+        text-shadow:
+        0 0 10px rgba(255,255,255,.25),
+        0 0 25px rgba(255,255,255,.18);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        text-shadow:none;
+
+    }
+
+}
+
+@keyframes selectedIn{
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes lineIn{
+
+    to{
+
+        transform:scaleX(1);
+
+    }
+
+}

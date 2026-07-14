@@ -57,7 +57,7 @@ setTimeout(() => {
 
     document.getElementById("loaderSelected").classList.add("show");
 
-}, 3000);
+}, 2500);
 
 
 // Loader 종료
@@ -67,7 +67,7 @@ setTimeout(() => {
 
     document.getElementById("app").classList.add("show");
 
-}, 3800);
+}, 3300);
         
 }
 

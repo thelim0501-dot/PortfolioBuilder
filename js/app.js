@@ -167,7 +167,7 @@ overlay.className = "image-overlay";
 
 overlay.innerHTML = `
     <span>VIEW</span>
-    <span class="arrow">→</span>
+    <span class="arrow">↗</span>
 `;
 
 box.appendChild(overlay);

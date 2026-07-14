@@ -161,6 +161,17 @@ setTimeout(() => {
 
             box.appendChild(img);
 
+// Hover Overlay
+const overlay = document.createElement("div");
+overlay.className = "image-overlay";
+
+overlay.innerHTML = `
+    <span>VIEW</span>
+    <span class="arrow">→</span>
+`;
+
+box.appendChild(overlay);
+
 this.gallery.appendChild(box);
 
         });

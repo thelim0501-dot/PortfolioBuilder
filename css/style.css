@@ -345,10 +345,11 @@ body{
 
 .image-box:hover .arrow{
 
-    transform:translateX(6px);
+    transform:
+        translateX(5px)
+        translateY(-5px);
 
 }
-
 /* ======================================================
     NAVIGATION
 ====================================================== */

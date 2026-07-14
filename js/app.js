@@ -187,46 +187,45 @@ this.gallery.appendChild(box);
 
     }
 
-    updatePage() {
+   updatePage() {
 
-        this.pages.forEach((page, index) => {
+    this.pages.forEach((page, index) => {
 
-            page.classList.toggle("active", index === this.currentPage);
+        page.classList.toggle("active", index === this.currentPage);
+
+    });
+
+    this.pageNumber.textContent =
+        `${String(this.currentPage + 1).padStart(2, "0")} / ${String(this.pages.length).padStart(2, "0")}`;
+
+    this.prevBtn.disabled = this.currentPage === 0;
+
+    this.nextBtn.disabled = this.currentPage === this.pages.length - 1;
+
+    // 갤러리 페이지 애니메이션
+    if (this.currentPage === 2) {
+
+        const boxes = document.querySelectorAll(".image-box");
+
+        boxes.forEach((box) => {
+
+            box.classList.remove("show");
 
         });
 
-        this.pageNumber.textContent =
-            `${String(this.currentPage + 1).padStart(2, "0")} / ${String(this.pages.length).padStart(2, "0")}`;
+        boxes.forEach((box, index) => {
 
-        this.prevBtn.disabled = this.currentPage === 0;
+            setTimeout(() => {
 
-        this.nextBtn.disabled = this.currentPage === this.pages.length - 1;
+                box.classList.add("show");
+
+            }, index * 120);
+
+        });
 
     }
 
-    // 갤러리 페이지 애니메이션
-if (this.currentPage === 2) {
-
-    const boxes = document.querySelectorAll(".image-box");
-
-    boxes.forEach((box) => {
-
-        box.classList.remove("show");
-
-    });
-
-    boxes.forEach((box, index) => {
-
-        setTimeout(() => {
-
-            box.classList.add("show");
-
-        }, index * 120);
-
-    });
-
 }
-
     handleKeyboard(e) {
 
         if (this.viewer.classList.contains("show")) {

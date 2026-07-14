@@ -139,7 +139,7 @@ setTimeout(() => {
 
         this.currentProjectImages = project.images;
 
-        project.images.forEach((imageName) => {
+        project.images.forEach((imageName, index) => {
 
             const box = document.createElement("div");
 
@@ -161,7 +161,13 @@ setTimeout(() => {
 
             box.appendChild(img);
 
-            this.gallery.appendChild(box);
+this.gallery.appendChild(box);
+
+setTimeout(() => {
+
+    box.classList.add("show");
+
+}, index * 120);
 
         });
 

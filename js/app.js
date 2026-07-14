@@ -16,7 +16,8 @@ class PortfolioApp {
         this.gallery = document.getElementById("gallery");
 
         this.viewer = document.getElementById("viewer");
-        this.viewerImage = document.getElementById("viewerImage");
+        this.viewerImageCurrent = document.getElementById("viewerImageCurrent");
+        this.viewerImageNext = document.getElementById("viewerImageNext");
         this.viewerPrev = document.getElementById("viewerPrev");
         this.viewerNext = document.getElementById("viewerNext");
         this.viewerCount = document.getElementById("viewerCount");
@@ -289,8 +290,14 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    this.viewerImage.src =
+    this.viewerImageCurrent.src =
         `images/${project.folder}/${project.images[index]}`;
+
+    this.viewerImageCurrent.className = "viewer-image";
+    this.viewerImageNext.className = "viewer-image";
+
+    this.viewerImageCurrent.style.opacity = "1";
+    this.viewerImageNext.style.opacity = "0";
 
     this.viewerCount.textContent =
         `${index + 1} / ${project.images.length}`;
@@ -303,27 +310,40 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    this.viewerImage.classList.add("fade");
+    const prevIndex =
+        (this.currentImageIndex - 1 + project.images.length) %
+        project.images.length;
+
+    this.viewerImageNext.src =
+        `images/${project.folder}/${project.images[prevIndex]}`;
+
+    this.viewerImageNext.className =
+        "viewer-image viewer-next-in";
+
+    this.viewerImageCurrent.className =
+        "viewer-image viewer-current-out";
 
     setTimeout(() => {
 
-        this.currentImageIndex--;
+        this.currentImageIndex = prevIndex;
 
-        if (this.currentImageIndex < 0) {
+        const temp = this.viewerImageCurrent;
+        this.viewerImageCurrent = this.viewerImageNext;
+        this.viewerImageNext = temp;
 
-            this.currentImageIndex = project.images.length - 1;
+        this.viewerImageCurrent.id = "viewerImageCurrent";
+        this.viewerImageNext.id = "viewerImageNext";
 
-        }
+        this.viewerImageCurrent.className = "viewer-image";
+        this.viewerImageCurrent.style.opacity = "1";
 
-        this.viewerImage.src =
-            `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+        this.viewerImageNext.className = "viewer-image";
+        this.viewerImageNext.style.opacity = "0";
 
         this.viewerCount.textContent =
             `${this.currentImageIndex + 1} / ${project.images.length}`;
 
-        this.viewerImage.classList.remove("fade");
-
-    }, 180);
+    }, 350);
 
 }
 
@@ -331,27 +351,41 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    this.viewerImage.classList.add("fade");
+    const nextIndex =
+        (this.currentImageIndex + 1) % project.images.length;
+
+    // 다음 이미지 미리 준비
+    this.viewerImageNext.src =
+        `images/${project.folder}/${project.images[nextIndex]}`;
+
+    this.viewerImageNext.className =
+        "viewer-image viewer-next-in";
+
+    this.viewerImageCurrent.className =
+        "viewer-image viewer-current-out";
 
     setTimeout(() => {
 
-        this.currentImageIndex++;
+        // 이미지 교체
+        this.currentImageIndex = nextIndex;
 
-        if (this.currentImageIndex >= project.images.length) {
+        const temp = this.viewerImageCurrent;
+        this.viewerImageCurrent = this.viewerImageNext;
+        this.viewerImageNext = temp;
 
-            this.currentImageIndex = 0;
+        this.viewerImageCurrent.id = "viewerImageCurrent";
+        this.viewerImageNext.id = "viewerImageNext";
 
-        }
+        this.viewerImageCurrent.className = "viewer-image";
+        this.viewerImageCurrent.style.opacity = "1";
 
-        this.viewerImage.src =
-            `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+        this.viewerImageNext.className = "viewer-image";
+        this.viewerImageNext.style.opacity = "0";
 
         this.viewerCount.textContent =
             `${this.currentImageIndex + 1} / ${project.images.length}`;
 
-        this.viewerImage.classList.remove("fade");
-
-    }, 180);
+    }, 350);
 
 }
     

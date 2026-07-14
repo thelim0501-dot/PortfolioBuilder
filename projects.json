@@ -2,11 +2,11 @@
     {
         "title": "3D Visualization",
 
-        "subtitle": "Office Lounge",
-
         "year": "2026",
 
         "folder": "project01",
+
+        "thumbnail": "01.png",
 
         "images": [
             "01.png",

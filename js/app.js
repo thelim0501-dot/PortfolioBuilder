@@ -34,13 +34,19 @@ class PortfolioApp {
 
     async initialize() {
 
-        this.bindEvents();
+    this.bindEvents();
 
-        await this.loadProjects();
+    await this.loadProjects();
 
-        this.updatePage();
+    this.updatePage();
 
-    }
+    setTimeout(() => {
+
+        document.getElementById("loader").classList.add("hide");
+
+    }, 1800);
+
+}
 
     bindEvents() {
 

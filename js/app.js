@@ -46,7 +46,7 @@ class PortfolioApp {
 
     document.querySelector(".loaderSelected").style.animationPlayState = "running";
 
-}, 600);
+}, 1200);
 
 
 setTimeout(() => {
@@ -55,7 +55,7 @@ setTimeout(() => {
 
     document.getElementById("app").classList.add("show");
 
-}, 2600);
+}, 3300);
 
 }
 

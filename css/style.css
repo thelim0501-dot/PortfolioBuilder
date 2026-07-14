@@ -264,6 +264,62 @@ body{
 
 }
 
+/* ==========================================
+    IMAGE OVERLAY
+========================================== */
+
+.image-overlay{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:24px 26px;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,0)
+    );
+
+    opacity:0;
+
+    transform:translateY(18px);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
+}
+
+.image-overlay span{
+
+    color:white;
+
+    letter-spacing:3px;
+
+    font-size:14px;
+
+    font-weight:400;
+
+}
+
+.image-overlay .arrow{
+
+    font-size:22px;
+
+    transition:transform .3s ease;
+
+}
+
 .image-box:hover{
 
     border-color:rgba(255,255,255,.25);
@@ -276,6 +332,20 @@ body{
 .image-box:hover img{
 
     transform:scale(1.035);
+
+}
+
+.image-box:hover .image-overlay{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.image-box:hover .arrow{
+
+    transform:translateX(6px);
 
 }
 

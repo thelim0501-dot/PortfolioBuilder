@@ -167,9 +167,23 @@ body{
 
 }
 
+.intro-tools{
+
+    margin-top:34px;
+
+    font-size:15px;
+
+    font-weight:300;
+
+    letter-spacing:5px;
+
+    color:#8f8f8f;
+
+}
+
 .intro-content h2{
 
-    margin-top:36px;
+    margin-top:55px;
 
     font-size:22px;
 
@@ -177,7 +191,7 @@ body{
 
     letter-spacing:6px;
 
-    color:#bdbdbd;
+    color:#d9d9d9;
 
 }
 

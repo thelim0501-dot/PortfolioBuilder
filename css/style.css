@@ -580,34 +580,6 @@ body{
 
 }
 
-/* ==========================================
-    VIEWER ANIMATION
-========================================== */
-
-.viewer-current-out{
-
-    opacity:0 !important;
-
-    transform:
-
-        translate(calc(-50% - 40px), -50%)
-
-        scale(.985);
-
-}
-
-.viewer-next-in{
-
-    opacity:1 !important;
-
-    transform:
-
-        translate(-50%,-50%)
-
-        scale(1);
-
-}
-
 /* ======================================================
     VIEWER BUTTONS
 ====================================================== */

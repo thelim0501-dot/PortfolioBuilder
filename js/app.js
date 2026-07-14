@@ -44,7 +44,7 @@ class PortfolioApp {
 // Loader Animation
 // =========================
 
-// 1.2초 동안 검정 화면 유지
+// 0.7초 동안 검정 화면 유지
 setTimeout(() => {
 
     document.getElementById("loaderTitle").style.animationPlayState = "running";

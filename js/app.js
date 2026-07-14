@@ -188,19 +188,23 @@ class PortfolioApp {
 
     openImage(src) {
 
-        this.viewerImage.src = src;
+    console.log("open");
 
-        this.viewer.classList.add("show");
+    this.viewerImage.src = src;
 
-    }
+    this.viewer.classList.add("show");
+
+}
 
     closeImage() {
 
-        this.viewer.classList.remove("show");
+    console.log("close");
 
-        this.viewerImage.src = "";
+    this.viewer.classList.remove("show");
 
-    }
+    this.viewerImage.src = "";
+
+}
 
 }
 

@@ -522,13 +522,13 @@ body{
     font-weight:800;
     letter-spacing:14px;
 
-    color:#ffffff;
+    color:#fff;
 
     opacity:.15;
 
     text-shadow:none;
 
-    animation:flickerLamp 1.8s ease forwards;
+    animation:flickerLamp 2.2s linear forwards;
 
     animation-play-state:paused;
 
@@ -594,66 +594,76 @@ body{
 
     0%{
 
-        opacity:.035;
-
-        color:#222;
-
+        opacity:.12;
+        color:#555;
         text-shadow:none;
 
     }
 
-    20%{
+    18%{
 
-        opacity:.035;
-
-    }
-
-    24%{
-
-        opacity:.22;
-
-        color:#777;
+        opacity:.12;
+        color:#555;
 
     }
 
-    28%{
+    /* 첫 번째 점등 */
+    22%{
 
-        opacity:.04;
+        opacity:.45;
+        color:#d5d5d5;
+        text-shadow:
+            0 0 8px rgba(255,255,255,.18);
 
     }
 
+    /* 다시 꺼짐 */
+    27%{
+
+        opacity:.10;
+        color:#444;
+        text-shadow:none;
+
+    }
+
+    /* 두 번째 점등 */
     40%{
 
-        opacity:.55;
-
-        color:#d0d0d0;
-
-    }
-
-    45%{
-
-        opacity:.08;
+        opacity:.75;
+        color:#f3f3f3;
+        text-shadow:
+            0 0 12px rgba(255,255,255,.30),
+            0 0 22px rgba(255,255,255,.15);
 
     }
 
-    62%{
+    /* 다시 살짝 꺼짐 */
+    48%{
+
+        opacity:.18;
+        color:#666;
+        text-shadow:none;
+
+    }
+
+    /* 마지막 점등 */
+    70%{
 
         opacity:1;
-
         color:#fff;
 
         text-shadow:
-            0 0 8px rgba(255,255,255,.45),
-            0 0 25px rgba(255,255,255,.22);
+            0 0 10px rgba(255,255,255,.55),
+            0 0 22px rgba(255,255,255,.30),
+            0 0 40px rgba(255,255,255,.12);
 
     }
 
+    /* 안정화 */
     100%{
 
         opacity:1;
-
         color:#fff;
-
         text-shadow:none;
 
     }

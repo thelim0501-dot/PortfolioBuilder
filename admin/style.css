@@ -226,3 +226,47 @@ body{
     transform:translateY(-2px);
 
 }
+
+/* ======================================
+    IMAGE CARD
+====================================== */
+
+.image-card{
+
+    background:#181818;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.image-card img{
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.filename{
+
+    padding:14px;
+
+    font-size:13px;
+
+    color:#bdbdbd;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}

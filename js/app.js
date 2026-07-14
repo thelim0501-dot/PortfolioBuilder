@@ -17,6 +17,11 @@ class PortfolioApp {
 
         this.viewer = document.getElementById("viewer");
         this.viewerImage = document.getElementById("viewerImage");
+        this.viewerPrev = document.getElementById("viewerPrev");
+        this.viewerNext = document.getElementById("viewerNext");
+        this.viewerCount = document.getElementById("viewerCount");
+
+        this.currentImageIndex = 0;
         this.closeViewer = document.getElementById("closeViewer");
 
         this.currentPage = 0;
@@ -87,6 +92,8 @@ class PortfolioApp {
 
         const project = this.projects[0];
 
+        this.currentProjectImages = project.images;
+
         project.images.forEach((imageName) => {
 
             const box = document.createElement("div");
@@ -103,7 +110,7 @@ class PortfolioApp {
 
             img.addEventListener("click", () => {
 
-                this.openImage(img.src);
+                this.openImage(project.images.indexOf(imageName));
 
             });
 
@@ -186,19 +193,23 @@ class PortfolioApp {
 
     }
 
-    openImage(src) {
+    openImage(index) {
 
-    console.log("open");
+    this.currentImageIndex = index;
 
-    this.viewerImage.src = src;
+    const project = this.projects[0];
+
+    this.viewerImage.src =
+        `images/${project.folder}/${project.images[index]}`;
+
+    this.viewerCount.textContent =
+        `${index + 1} / ${project.images.length}`;
 
     this.viewer.classList.add("show");
 
 }
 
     closeImage() {
-
-    console.log("close");
 
     this.viewer.classList.remove("show");
 

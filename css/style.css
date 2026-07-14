@@ -532,6 +532,8 @@ body{
 
     animation:flicker 1.4s forwards;
 
+    animation-play-state:paused;
+
 }
 
 .loaderSelected{
@@ -551,6 +553,8 @@ body{
     transform:translateY(12px);
 
     animation:selectedIn .5s ease forwards;
+
+    animation-play-state:paused;
 
     animation-delay:1.25s;
 

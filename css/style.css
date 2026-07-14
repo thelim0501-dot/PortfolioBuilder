@@ -229,9 +229,25 @@ body{
 
     background:#111;
 
-    transition:.35s;
-
     cursor:pointer;
+
+    opacity:0;
+
+    transform:translateY(28px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.image-box.show{
+
+    opacity:1;
+
+    transform:translateY(0);
 
 }
 
@@ -250,13 +266,16 @@ body{
 
 .image-box:hover{
 
-    border-color:rgba(255,255,255,.18);
+    border-color:rgba(255,255,255,.25);
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.35);
 
 }
 
 .image-box:hover img{
 
-    transform:scale(1.02);
+    transform:scale(1.035);
 
 }
 

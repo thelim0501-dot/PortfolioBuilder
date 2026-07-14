@@ -16,8 +16,7 @@ class PortfolioApp {
         this.gallery = document.getElementById("gallery");
 
         this.viewer = document.getElementById("viewer");
-        this.viewerImageCurrent = document.getElementById("viewerImageCurrent");
-        this.viewerImageNext = document.getElementById("viewerImageNext");
+        this.viewerImage = document.getElementById("viewerImage");
         this.viewerPrev = document.getElementById("viewerPrev");
         this.viewerNext = document.getElementById("viewerNext");
         this.viewerCount = document.getElementById("viewerCount");
@@ -290,14 +289,8 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    this.viewerImageCurrent.src =
+    this.viewerImage.src =
         `images/${project.folder}/${project.images[index]}`;
-
-    this.viewerImageCurrent.className = "viewer-image";
-    this.viewerImageNext.className = "viewer-image";
-
-    this.viewerImageCurrent.style.opacity = "1";
-    this.viewerImageNext.style.opacity = "0";
 
     this.viewerCount.textContent =
         `${index + 1} / ${project.images.length}`;
@@ -310,40 +303,19 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    const prevIndex =
-        (this.currentImageIndex - 1 + project.images.length) %
-        project.images.length;
+    this.currentImageIndex--;
 
-    this.viewerImageNext.src =
-        `images/${project.folder}/${project.images[prevIndex]}`;
+    if (this.currentImageIndex < 0) {
 
-    this.viewerImageNext.className =
-        "viewer-image viewer-next-in";
+        this.currentImageIndex = project.images.length - 1;
 
-    this.viewerImageCurrent.className =
-        "viewer-image viewer-current-out";
+    }
 
-    setTimeout(() => {
+    this.viewerImage.src =
+        `images/${project.folder}/${project.images[this.currentImageIndex]}`;
 
-        this.currentImageIndex = prevIndex;
-
-        const temp = this.viewerImageCurrent;
-        this.viewerImageCurrent = this.viewerImageNext;
-        this.viewerImageNext = temp;
-
-        this.viewerImageCurrent.id = "viewerImageCurrent";
-        this.viewerImageNext.id = "viewerImageNext";
-
-        this.viewerImageCurrent.className = "viewer-image";
-        this.viewerImageCurrent.style.opacity = "1";
-
-        this.viewerImageNext.className = "viewer-image";
-        this.viewerImageNext.style.opacity = "0";
-
-        this.viewerCount.textContent =
-            `${this.currentImageIndex + 1} / ${project.images.length}`;
-
-    }, 350);
+    this.viewerCount.textContent =
+        `${this.currentImageIndex + 1} / ${project.images.length}`;
 
 }
 
@@ -351,41 +323,19 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    const nextIndex =
-        (this.currentImageIndex + 1) % project.images.length;
+    this.currentImageIndex++;
 
-    // 다음 이미지 미리 준비
-    this.viewerImageNext.src =
-        `images/${project.folder}/${project.images[nextIndex]}`;
+    if (this.currentImageIndex >= project.images.length) {
 
-    this.viewerImageNext.className =
-        "viewer-image viewer-next-in";
+        this.currentImageIndex = 0;
 
-    this.viewerImageCurrent.className =
-        "viewer-image viewer-current-out";
+    }
 
-    setTimeout(() => {
+    this.viewerImage.src =
+        `images/${project.folder}/${project.images[this.currentImageIndex]}`;
 
-        // 이미지 교체
-        this.currentImageIndex = nextIndex;
-
-        const temp = this.viewerImageCurrent;
-        this.viewerImageCurrent = this.viewerImageNext;
-        this.viewerImageNext = temp;
-
-        this.viewerImageCurrent.id = "viewerImageCurrent";
-        this.viewerImageNext.id = "viewerImageNext";
-
-        this.viewerImageCurrent.className = "viewer-image";
-        this.viewerImageCurrent.style.opacity = "1";
-
-        this.viewerImageNext.className = "viewer-image";
-        this.viewerImageNext.style.opacity = "0";
-
-        this.viewerCount.textContent =
-            `${this.currentImageIndex + 1} / ${project.images.length}`;
-
-    }, 350);
+    this.viewerCount.textContent =
+        `${this.currentImageIndex + 1} / ${project.images.length}`;
 
 }
     

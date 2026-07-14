@@ -49,7 +49,7 @@ setTimeout(() => {
 
     document.getElementById("loaderTitle").style.animationPlayState = "running";
 
-}, 1200);
+}, 700);
 
 
 // 형광등이 켜진 후 Selected Works 표시

@@ -44,12 +44,12 @@ class PortfolioApp {
 // Loader Animation
 // =========================
 
-// 0.7초 동안 검정 화면 유지
+// 0.3초 동안 검정 화면 유지
 setTimeout(() => {
 
     document.getElementById("loaderTitle").style.animationPlayState = "running";
 
-}, 700);
+}, 300);
 
 
 // 형광등이 켜진 후 Selected Works 표시

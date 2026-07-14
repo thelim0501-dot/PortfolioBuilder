@@ -155,9 +155,9 @@ setTimeout(() => {
 
             img.addEventListener("click", () => {
 
-                this.openImage(project.images.indexOf(imageName));
+    this.openImage(index);
 
-            });
+});
 
             box.appendChild(img);
 

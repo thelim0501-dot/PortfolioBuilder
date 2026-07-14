@@ -515,28 +515,81 @@ body{
 
 }
 
-#viewerImage{
+/* ==========================================
+    VIEWER IMAGES
+========================================== */
+
+.viewer-image{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
 
     max-width:92vw;
     max-height:90vh;
 
     object-fit:contain;
 
-    opacity:1;
-
-    transform:scale(1);
-
-    transition:
-        opacity .22s ease,
-        transform .35s ease;
-
-}
-
-#viewerImage.fade{
+    transform:
+        translate(-50%,-50%)
+        scale(1);
 
     opacity:0;
 
-    transform:scale(1.02);
+    pointer-events:none;
+
+    transition:
+
+        transform .35s ease,
+
+        opacity .35s ease;
+
+}
+
+/* 현재 이미지 */
+
+#viewerImageCurrent{
+
+    opacity:1;
+
+    z-index:2;
+
+}
+
+/* 다음 이미지 */
+
+#viewerImageNext{
+
+    z-index:1;
+
+}
+
+/* ==========================================
+    VIEWER ANIMATION
+========================================== */
+
+.viewer-current-out{
+
+    opacity:0 !important;
+
+    transform:
+
+        translate(calc(-50% - 40px), -50%)
+
+        scale(.985);
+
+}
+
+.viewer-next-in{
+
+    opacity:1 !important;
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(1);
 
 }
 

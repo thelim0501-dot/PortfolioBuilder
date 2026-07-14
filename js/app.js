@@ -303,19 +303,27 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    this.currentImageIndex--;
+    this.viewerImage.classList.add("fade");
 
-    if (this.currentImageIndex < 0) {
+    setTimeout(() => {
 
-        this.currentImageIndex = project.images.length - 1;
+        this.currentImageIndex--;
 
-    }
+        if (this.currentImageIndex < 0) {
 
-    this.viewerImage.src =
-        `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+            this.currentImageIndex = project.images.length - 1;
 
-    this.viewerCount.textContent =
-        `${this.currentImageIndex + 1} / ${project.images.length}`;
+        }
+
+        this.viewerImage.src =
+            `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+
+        this.viewerCount.textContent =
+            `${this.currentImageIndex + 1} / ${project.images.length}`;
+
+        this.viewerImage.classList.remove("fade");
+
+    }, 180);
 
 }
 
@@ -323,19 +331,27 @@ this.gallery.appendChild(box);
 
     const project = this.projects[0];
 
-    this.currentImageIndex++;
+    this.viewerImage.classList.add("fade");
 
-    if (this.currentImageIndex >= project.images.length) {
+    setTimeout(() => {
 
-        this.currentImageIndex = 0;
+        this.currentImageIndex++;
 
-    }
+        if (this.currentImageIndex >= project.images.length) {
 
-    this.viewerImage.src =
-        `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+            this.currentImageIndex = 0;
 
-    this.viewerCount.textContent =
-        `${this.currentImageIndex + 1} / ${project.images.length}`;
+        }
+
+        this.viewerImage.src =
+            `images/${project.folder}/${project.images[this.currentImageIndex]}`;
+
+        this.viewerCount.textContent =
+            `${this.currentImageIndex + 1} / ${project.images.length}`;
+
+        this.viewerImage.classList.remove("fade");
+
+    }, 180);
 
 }
     

@@ -47,15 +47,11 @@ class PortfolioApp {
 
         this.closeViewer.addEventListener("click", () => this.closeImage());
 
-        this.viewer.addEventListener("click", (e) => {
+        this.viewer.addEventListener("click", () => {
 
-            if (e.target === this.viewer) {
+            this.closeImage();
 
-                this.closeImage();
-
-            }
-
-        });
+      });
 
     }
 

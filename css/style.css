@@ -383,6 +383,14 @@ body{
 
 }
 
+.image-box:active img{
+
+    transform:scale(1.06);
+
+    transition:transform .15s ease;
+
+}
+
 .image-box:hover .image-overlay{
 
     opacity:1;
@@ -502,7 +510,12 @@ body{
     opacity:0;
     visibility:hidden;
 
-    transition:.35s;
+    transform:scale(1.01);
+
+    transition:
+        opacity .28s ease,
+        transform .28s ease,
+        visibility .28s;
 
     z-index:9999;
 
@@ -512,6 +525,8 @@ body{
 
     opacity:1;
     visibility:visible;
+
+    transform:scale(1);
 
 }
 

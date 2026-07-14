@@ -574,6 +574,8 @@ body{
 
     animation:lineIn .45s ease forwards;
 
+    animation-play-state:paused;
+
     animation-delay:1.25s;
 
 }

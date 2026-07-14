@@ -40,23 +40,35 @@ class PortfolioApp {
 
     this.updatePage();
 
-    setTimeout(() => {
+    // =========================
+// Loader Animation
+// =========================
+
+// 1.2초 동안 검정 화면 유지
+setTimeout(() => {
 
     document.getElementById("loaderTitle").style.animationPlayState = "running";
-
-    document.querySelector(".loaderSelected").style.animationPlayState = "running";
 
 }, 1200);
 
 
+// 형광등이 켜진 후 Selected Works 표시
+setTimeout(() => {
+
+    document.getElementById("loaderSelected").classList.add("show");
+
+}, 3000);
+
+
+// Loader 종료
 setTimeout(() => {
 
     document.getElementById("loader").classList.add("hide");
 
     document.getElementById("app").classList.add("show");
 
-}, 3300);
-
+}, 3800);
+        
 }
 
     bindEvents() {

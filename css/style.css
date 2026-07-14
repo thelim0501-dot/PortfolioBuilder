@@ -699,6 +699,9 @@ body{
 
     font-variant-numeric:tabular-nums;
 
+    z-index:20;      /* 추가 */
+    pointer-events:none; /* 추가 */
+
 }
 
 /* ======================================================

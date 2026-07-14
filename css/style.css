@@ -548,13 +548,19 @@ body{
 
     opacity:0;
 
-    transition:.45s ease;
+    transform:translateY(12px);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
 
 }
 
 #loaderSelected.show{
 
     opacity:1;
+
+    transform:translateY(0);
 
 }
 
@@ -564,14 +570,6 @@ body{
     height:1px;
 
     background:#6d6d6d;
-
-    opacity:0;
-
-    transform:scaleX(.2);
-
-    transition:
-        opacity .45s ease,
-        transform .45s ease;
 
 }
 
@@ -584,24 +582,6 @@ body{
     font-weight:300;
 
     letter-spacing:4px;
-
-    opacity:0;
-
-    transition:.45s ease;
-
-}
-
-#loaderSelected.show span{
-
-    opacity:1;
-
-    transform:scaleX(1);
-
-}
-
-#loaderSelected.show p{
-
-    opacity:1;
 
 }
 

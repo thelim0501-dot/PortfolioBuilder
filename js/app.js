@@ -42,11 +42,20 @@ class PortfolioApp {
 
     setTimeout(() => {
 
-        document.getElementById("loader").classList.add("hide");
+    document.getElementById("loaderTitle").style.animationPlayState = "running";
 
-        document.getElementById("app").classList.add("show");
+    document.querySelector(".loaderSelected").style.animationPlayState = "running";
 
-    }, 1800);
+}, 600);
+
+
+setTimeout(() => {
+
+    document.getElementById("loader").classList.add("hide");
+
+    document.getElementById("app").classList.add("show");
+
+}, 2600);
 
 }
 

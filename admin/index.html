@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio CMS</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        Portfolio CMS
+    </div>
+
+    <button id="newProject">
+        + New Project
+    </button>
+
+    <div id="projectList" class="project-list">
+
+    </div>
+
+</div>
+
+
+<div class="content">
+
+    <div class="upload-area" id="uploadArea">
+
+        <h2>Drag Images Here</h2>
+
+        <p>or click to upload</p>
+
+        <input
+            type="file"
+            id="fileInput"
+            multiple
+            accept="image/*"
+            hidden>
+
+    </div>
+
+    <div id="imageList" class="image-list">
+
+    </div>
+
+    <button id="saveBtn">
+
+        SAVE
+
+    </button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

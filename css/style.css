@@ -54,20 +54,26 @@ body{
 .page{
 
     position:absolute;
+
     inset:0;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
+    padding:70px 0 70px;
+
     opacity:0;
+
     visibility:hidden;
 
     transform:translateY(40px);
 
     transition:
-    opacity .6s,
-    transform .6s;
+        opacity .6s,
+        transform .6s;
 
 }
 
@@ -170,16 +176,15 @@ body{
 
 .gallery{
 
-    width:min(1460px,82vw);
+    width:min(1380px,78vw);
 
     display:grid;
 
     grid-template-columns:repeat(2,1fr);
 
-    gap:26px;
+    gap:28px;
 
-    margin-top:40px;
-    margin-bottom:80px;
+    margin:0;
 
 }
 

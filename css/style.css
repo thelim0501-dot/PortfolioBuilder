@@ -487,11 +487,9 @@ body{
 #loader{
 
     position:fixed;
-
     inset:0;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
@@ -499,15 +497,15 @@ body{
 
     z-index:99999;
 
-    transition:opacity .8s ease,
-               visibility .8s ease;
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
 
 }
 
 #loader.hide{
 
     opacity:0;
-
     visibility:hidden;
 
 }
@@ -521,22 +519,22 @@ body{
 #loaderTitle{
 
     font-size:110px;
-
     font-weight:800;
-
     letter-spacing:14px;
 
-    color:#fff;
+    color:#ffffff;
 
-    opacity:0;
+    opacity:.035;
 
-    animation:flicker 1.4s forwards;
+    text-shadow:none;
+
+    animation:flickerLamp 1.8s ease forwards;
 
     animation-play-state:paused;
 
 }
 
-.loaderSelected{
+#loaderSelected{
 
     display:flex;
 
@@ -550,43 +548,34 @@ body{
 
     opacity:0;
 
-    transform:translateY(12px);
-
-    animation:selectedIn .5s ease forwards;
-
-    animation-play-state:paused;
-
-    animation-delay:1.25s;
+    transition:.45s ease;
 
 }
 
-.loaderSelected span{
+#loaderSelected.show{
+
+    opacity:1;
+
+}
+
+#loaderSelected span{
 
     width:60px;
-
     height:1px;
 
     background:#6d6d6d;
 
-    transform:scaleX(0);
+    opacity:0;
 
-    transform-origin:center;
+    transform:scaleX(.2);
 
-    animation:lineIn .45s ease forwards;
-
-    animation-play-state:paused;
-
-    animation-delay:1.25s;
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
 
 }
 
-.loaderSelected span:last-child{
-
-    animation-delay:1.35s;
-
-}
-
-.loaderSelected p{
+#loaderSelected p{
 
     color:#bdbdbd;
 
@@ -596,68 +585,86 @@ body{
 
     letter-spacing:4px;
 
+    opacity:0;
+
+    transition:.45s ease;
+
+}
+
+#loaderSelected.show span{
+
+    opacity:1;
+
+    transform:scaleX(1);
+
+}
+
+#loaderSelected.show p{
+
+    opacity:1;
+
 }
 
 
-/* ===========================
-        Animation
-=========================== */
+/* ==========================
+    Lamp Animation
+========================== */
 
-@keyframes flicker{
+@keyframes flickerLamp{
 
     0%{
 
-        opacity:0;
+        opacity:.035;
 
-        filter:brightness(.2);
+        color:#222;
 
         text-shadow:none;
 
     }
 
-    8%{
+    20%{
 
-        opacity:.18;
-
-    }
-
-    12%{
-
-        opacity:0;
+        opacity:.035;
 
     }
 
-    22%{
+    24%{
 
-        opacity:.45;
+        opacity:.22;
+
+        color:#777;
 
     }
 
     28%{
 
-        opacity:0;
+        opacity:.04;
+
+    }
+
+    40%{
+
+        opacity:.55;
+
+        color:#d0d0d0;
 
     }
 
     45%{
 
-        opacity:.75;
+        opacity:.08;
 
     }
 
-    52%{
-
-        opacity:.15;
-
-    }
-
-    65%{
+    62%{
 
         opacity:1;
 
+        color:#fff;
+
         text-shadow:
-        0 0 10px rgba(255,255,255,.25),
-        0 0 25px rgba(255,255,255,.18);
+            0 0 8px rgba(255,255,255,.45),
+            0 0 25px rgba(255,255,255,.22);
 
     }
 
@@ -665,25 +672,13 @@ body{
 
         opacity:1;
 
+        color:#fff;
+
         text-shadow:none;
 
     }
 
 }
-
-@keyframes selectedIn{
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-@keyframes lineIn{
 
     to{
 

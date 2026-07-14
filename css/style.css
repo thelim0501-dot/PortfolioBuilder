@@ -361,6 +361,63 @@ body{
 
 }
 
+/* ======================================================
+    VIEWER BUTTONS
+====================================================== */
+
+#viewerPrev,
+#viewerNext{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:60px;
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:32px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    backdrop-filter:blur(10px);
+
+}
+
+#viewerPrev{
+
+    left:40px;
+
+}
+
+#viewerNext{
+
+    right:40px;
+
+}
+
+#viewerPrev:hover,
+#viewerNext:hover{
+
+    background:white;
+
+    color:black;
+
+    transform:translateY(-50%) scale(1.08);
+
+}
+
 #closeViewer{
 
     position:absolute;
@@ -385,5 +442,29 @@ body{
 #closeViewer:hover{
 
     transform:rotate(90deg);
+
+}
+
+/* ======================================================
+    VIEWER COUNT
+====================================================== */
+
+#viewerCount{
+
+    position:absolute;
+
+    bottom:35px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    font-size:18px;
+
+    letter-spacing:3px;
+
+    font-variant-numeric:tabular-nums;
 
 }

@@ -163,12 +163,6 @@ setTimeout(() => {
 
 this.gallery.appendChild(box);
 
-setTimeout(() => {
-
-    box.classList.add("show");
-
-}, index * 120);
-
         });
 
     }
@@ -209,6 +203,29 @@ setTimeout(() => {
         this.nextBtn.disabled = this.currentPage === this.pages.length - 1;
 
     }
+
+    // 갤러리 페이지 애니메이션
+if (this.currentPage === 2) {
+
+    const boxes = document.querySelectorAll(".image-box");
+
+    boxes.forEach((box) => {
+
+        box.classList.remove("show");
+
+    });
+
+    boxes.forEach((box, index) => {
+
+        setTimeout(() => {
+
+            box.classList.add("show");
+
+        }, index * 120);
+
+    });
+
+}
 
     handleKeyboard(e) {
 

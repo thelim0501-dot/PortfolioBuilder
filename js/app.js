@@ -44,6 +44,8 @@ class PortfolioApp {
 
         document.getElementById("loader").classList.add("hide");
 
+        document.getElementById("app").classList.add("show");
+
     }, 1800);
 
 }

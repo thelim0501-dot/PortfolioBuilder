@@ -528,8 +528,8 @@ body{
 
 #viewerImage{
 
-    max-width:92vw;
-    max-height:90vh;
+    max-width:85vw;
+    max-height:85vh;
 
     object-fit:contain;
 
